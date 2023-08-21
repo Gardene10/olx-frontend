@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
-import MaskedInput from "react-text-mask"
+import MaskedInput from "react-text-mask" 
 import createNumberMask from "text-mask-addons/dist/createNumberMask"
 
 import useAPI from "../../utils/olxAPI";
@@ -13,10 +13,10 @@ const Page = () => {
     const fileField = useRef()
     const history = useNavigate()
 
-    const [categories, setCategories] = useState([])        // !! não confundir com o abaixo
+    const [categories, setCategories] = useState([]) // !! não confundir com o abaixo //here is the list
 
     const [title, setTitle] = useState("")
-    const [category, setCategory] = useState("")            // !! não confundir com o acima
+    const [category, setCategory] = useState("") // !! não confundir com o acima // here is the selected
     const [price, setPrice] = useState("")
     const [priceNegotiable, setPriceNegotiable] = useState(false)
     const [desc, setDesc] = useState("")
@@ -27,7 +27,7 @@ const Page = () => {
     useEffect(() => {
         const getCategories = async () => {
             const cats = await api.getCategories()
-            setCategories(cats)
+            setCategories(cats) //catching categories
         }
         getCategories()
     }, []) 
@@ -54,7 +54,7 @@ const Page = () => {
             formData.append("desc", desc)
             formData.append("cat", category)
 
-            if(fileField.current.files.length > 0) {
+            if(fileField.current.files.length > 0) { //make sure if have images
                 for(let i = 0; i < fileField.current.files.length; i++) {
                     formData.append("img", fileField.current.files[i])
                 }
@@ -63,10 +63,10 @@ const Page = () => {
             const json = await api.addAd(formData)
 
             if(!json.error) {
-                history(`/ad/${json.id}`)
+                history(`/ad/${json.id}`) //if all right redirect the user to own ad
                 return
             } else {
-                setError(json.error)
+                setError(json.error) //show error
             }
 
         } else {
@@ -76,7 +76,7 @@ const Page = () => {
         setDisabled(false)
     }
 
-    const priceMask = createNumberMask({
+    const priceMask = createNumberMask({ //creating some proprieties of our price
         prefix: "R$ ",
         includeThousandsSeparator: true,
         thousandsSeparatorSymbol: ".",
@@ -140,7 +140,7 @@ const Page = () => {
                                 type="checkbox"
                                 disabled={disabled}
                                 checked={priceNegotiable}
-                                onChange={e => setPriceNegotiable(!priceNegotiable)}        // inverte os valores
+                                onChange={e => setPriceNegotiable(!priceNegotiable)}  // inverte os valores
                             />
                         </div>
                     </label>
@@ -161,7 +161,7 @@ const Page = () => {
                                 type="file"
                                 disabled={disabled}
                                 ref={fileField}
-                                multiple                // atributo pra declarar que é aceito mais de 1 arquivo
+                                multiple   // atributo pra declarar que é aceito mais de 1 arquivo
                             />
                         </div>
                     </label>

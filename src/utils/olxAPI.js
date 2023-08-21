@@ -3,7 +3,7 @@ import qs from "qs"
 
 const BASEAPI = "http://alunos.b7web.com.br:501"
 
-const apiFetchFile = async (endpoint, body) => {
+const apiFetchFile = async (endpoint, body) => {  //creating a new api because it need to send imgs 
     if(!body.token) {                           // cria o token automáticamente
         let token = Cookies.get("token")
         if(token) {

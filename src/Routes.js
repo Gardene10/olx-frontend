@@ -23,7 +23,7 @@ const RoutesContainer = () => {
             <Route path="/ads" element={<Ads />} />
             <Route path="*" element={<NotFound />} />
             <Route
-                path="/post-an-ad"
+                path="/post-an-ad"                //using privite route that i created at routerHandler
                 element={
                     <RouteHandler private>
                         <AddAd/>

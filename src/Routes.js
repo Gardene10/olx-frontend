@@ -12,6 +12,7 @@ import AddAd from "./pages/AddAd"
 import Ads from "./pages/Ads"
 import NotFound from "./pages/NotFound"
 
+
 const RoutesContainer = () => {
     return (
         <Routes>
@@ -23,7 +24,7 @@ const RoutesContainer = () => {
             <Route path="/ads" element={<Ads />} />
             <Route path="*" element={<NotFound />} />
             <Route
-                path="/post-an-ad"                //using privite route that i created at routerHandler
+                path="/post-an-ad"                //using privite route that i created at
                 element={
                     <RouteHandler private>
                         <AddAd/>

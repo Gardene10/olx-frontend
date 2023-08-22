@@ -26,7 +26,7 @@ const Page = () => {
     const [categories, setCategories] = useState([])
     const [adList, setAdList] = useState([])
     const [pageCount, setPageCount] = useState(0) //total ads page 
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1) //
 
     const [resultOpacity, setResultOpacity] = useState(1) //way to do an opacity in ads when the user is still typing
     const [loading, setLoading] = useState(true)  //way to show if the page is loading
@@ -41,7 +41,7 @@ const Page = () => {
             q,
             cat,
             state,
-            offset
+            offset   //item per page
         })
         setAdList(json.ads)
         setAdsTotal(json.total)
